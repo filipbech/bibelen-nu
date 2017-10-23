@@ -1,0 +1,19 @@
+{
+  "name": "bibelen-nu",
+  "version": "1.0.0",
+  "description": "",
+  "main": "index.html",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/filipbech/bibelen-nu.git"
+  },
+  "author": "Filip Bech-Larsen",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/filipbech/bibelen-nu/issues"
+  },
+  "homepage": "https://github.com/filipbech/bibelen-nu#readme"
+}
