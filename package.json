@@ -1,19 +1,39 @@
 {
-  "name": "bibelen-nu",
-  "version": "1.0.0",
-  "description": "",
-  "main": "index.html",
-  "scripts": {
-    "test": "echo \"Error: no test specified\" && exit 1"
-  },
-  "repository": {
-    "type": "git",
-    "url": "git+https://github.com/filipbech/bibelen-nu.git"
-  },
-  "author": "Filip Bech-Larsen",
-  "license": "ISC",
+  "private": true,
+  "name": "bibelennu",
+  "version": "0.0.0",
+  "license": "MIT",
+  "type": "git",
   "bugs": {
     "url": "https://github.com/filipbech/bibelen-nu/issues"
   },
-  "homepage": "https://github.com/filipbech/bibelen-nu#readme"
+  "homepage": "https://github.com/filipbech/bibelen-nu#readme",
+  "author": "Filip Bech-Larsen",
+  "url": "git+https://github.com/filipbech/bibelen-nu.git",
+  "scripts": {
+    "start": "if-env NODE_ENV=production && npm run -s serve || npm run -s dev",
+    "build": "copyfiles src/api/*.json build --up && preact build",
+    "serve": "copyfiles src/api/*.json build --up && preact build && preact serve",
+    "deploy": "copyfiles src/api/*.json build --up && preact build && firebase deploy",
+    "dev": "preact watch",
+    "lint": "eslint src"
+  },
+  "eslintConfig": {
+    "extends": "eslint-config-synacor"
+  },
+  "eslintIgnore": [
+    "build/*"
+  ],
+  "devDependencies": {
+    "eslint": "^4.5.0",
+    "eslint-config-synacor": "^1.1.0",
+    "if-env": "^1.0.0",
+    "preact-cli": "^2.0.0",
+    "copyfiles": "^1.2.0"
+  },
+  "dependencies": {
+    "preact": "^8.2.1",
+    "preact-compat": "^3.17.0",
+    "preact-router": "^2.5.5"
+  }
 }
