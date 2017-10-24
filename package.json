@@ -12,9 +12,9 @@
   "url": "git+https://github.com/filipbech/bibelen-nu.git",
   "scripts": {
     "start": "if-env NODE_ENV=production && npm run -s serve || npm run -s dev",
-    "build": "copyfiles src/api/*.json build --up && preact build",
-    "serve": "copyfiles src/api/*.json build --up && preact build && preact serve",
-    "deploy": "copyfiles src/api/*.json build --up && preact build && firebase deploy",
+    "build": "preact build && copyfiles src/api/*.json build/api --up ",
+    "serve": "preact build && copyfiles src/api/*.json build/api --up && preact serve",
+    "deploy": "preact build && copyfiles src/api/*.json build/api --up && firebase deploy",
     "dev": "preact watch",
     "lint": "eslint src"
   },
