@@ -1,7 +1,7 @@
 import { h, Component } from 'preact';
 import { Link } from 'preact-router/match';
 
-import { books } from '../../data/books';
+import { getBook } from '../../data/books';
 
 export default class TopBars extends Component {
 
@@ -15,6 +15,8 @@ export default class TopBars extends Component {
         this.fadeMiddle = this.props.chapter 
             ? 'fade1' 
             : '';
+
+        this.book = getBook(this.props.book);
     }
 
 	render({testament, book, chapter}) {
@@ -48,8 +50,8 @@ export default class TopBars extends Component {
                         <div class={'bar '+this.fadeMiddle}>
                         {
                         chapter 
-                            ?   <Link href={'/'+book}>{books[book].title}</Link>
-                            :   <span>{books[book].title}</span>
+                            ?   <Link href={'/'+book}>{this.book.title}</Link>
+                            :   <span>{this.book.title}</span>
                         }
                         </div>
                         

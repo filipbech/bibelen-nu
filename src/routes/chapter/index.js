@@ -1,7 +1,9 @@
 import { h, Component } from 'preact';
 import { Link } from 'preact-router/match';
-import { books, oldTestament, newTestament } from '../../data/books'; 
+import { getBook } from '../../data/books'; 
 import TopBars from '../../components/header/top-bars';
+
+import { getChapter } from '../../data/chapters';
 
 export default class Chapter extends Component {
 
@@ -9,18 +11,21 @@ export default class Chapter extends Component {
         this.loadContent(this.props.book, this.props.chapter);
     }
     componentWillReceiveProps(nextProps) {
-        this.loadContent(nextProps.book, nextProps.chapter);
+        if(nextProps.chapter != this.props.chapter || nextProps.book != this.props.book) {
+            this.loadContent(nextProps.book, nextProps.chapter);
+        }
     }
 
     loadContent(book, chapter) {
-        this.book = books[book];
+        this.book = getBook(book);
         this.state.content = '...';
+        if (typeof window !== "undefined") { 
+            window.scrollTo(0,0);
+        }
 
-        fetch(`/api/${this.book.apiName.toLowerCase()}-${chapter}.json`)
-            .then(res => res.json())
-            .then(json => {
-                this.setState({content:json.text});
-            });
+        getChapter(this.book.apiName, chapter).then(content => {
+            this.setState({content});
+        });
     }
 
 	render() {

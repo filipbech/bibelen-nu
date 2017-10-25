@@ -1,12 +1,12 @@
 import { h, Component } from 'preact';
 import { Link } from 'preact-router/match';
-import { books, oldTestament, newTestament} from '../../data/books'; 
+import { getBook } from '../../data/books'; 
 import TopBars from '../../components/header/top-bars';
 
 export default class Book extends Component {
 
     componentWillMount() {
-        this.book = books[this.props.book];
+        this.book = getBook(this.props.book);
         this.chapters = [];
         for (let i=1;i<=this.book.chapters;i++) {
             this.chapters.push({
